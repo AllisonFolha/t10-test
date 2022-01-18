@@ -1,0 +1,17 @@
+.container h2  {
+  text-align: center;
+  margin: 25px auto;
+}
+.container p  {
+  text-align: center;
+  margin: 25px auto;
+}
+/* .list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+} */
+
+.submit-form {
+  background-color:#1fd4e7;
+}
