@@ -1,6 +1,8 @@
 import { Component } from "react";
 import UserDataService from "../services/service";
 import IUserData from '../types/type';
+import { Chart } from "react-google-charts";
+
 
 type Props = {};
 
@@ -15,7 +17,6 @@ export default class UsersList extends Component<Props, State> {
     super(props);
     this.refreshList = this.refreshList.bind(this);
     this.onDataChange = this.onDataChange.bind(this);
-
     this.state = {
       users: [],
       currentUser: null,
@@ -57,41 +58,45 @@ export default class UsersList extends Component<Props, State> {
     });
   }
 
+  options = {
+    title: "My Daily Activities",
+    pieHole: 0.4,
+    is3D: false,
+  };
+
   render() {
     const { users, currentUser, currentIndex } = this.state;
 
     return (
-      <div className="list row">
-        <div className="col-md-6">
-          <table className="table table-bordered ">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Participations</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {users &&
-                  users.map((user, index) => (
-                    <td className="list-group-item ">
-                      {user.name}
-                    </td>
-                  ))}
-              </tr>
-            </tbody>
-          </table>
-          <ul className="list-group">
-            {users &&
-              users.map((user, index) => (
-                <li className="list-group-item ">
-                  {user.name + user.lastName + user.participation}
-                </li>
-              ))}
-          </ul>
-        </div>
+      <div className="col-md-6">
+        <table className="table table-bordered ">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First name</th>
+              <th scope="col">Last name</th>
+              <th scope="col">Participations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {users &&
+                users.map((user, index) => (
+                  <td className="list-group-item ">
+                    {user.name}
+                  </td>
+                ))}
+            </tr>
+          </tbody>
+        </table>
+        <ul className="list-group">
+          {users &&
+            users.map((user, index) => (
+              <li className="list-group-item ">
+                {user.name + user.lastName + user.participation}
+              </li>
+            ))}
+        </ul>
       </div>
     );
   }

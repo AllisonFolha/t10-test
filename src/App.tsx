@@ -5,24 +5,23 @@ import './App.css';
 
 import AddUser from "./components/add";
 import UserList from "./components/list";
-import { Chart } from "react-google-charts";
+import GoogleChart from "./components/chart";
+
 
 class App extends Component {
   render() {
     return (
       <div>
-        <AddUser></AddUser>
+        <AddUser/>
         <div className="container mt-3">
-          <h2>DATA</h2>
-          <p> Desafio tecnico T10</p>
-          <UserList></UserList>
-          <Chart
-            chartType="PieChart"
-            data={[["Age", "Weight"], [4, 5.5], [8, 12]]}
-            width="100%"
-            height="400px"
-            legendToggle
-          />
+          <div className="d-flex align-items-start flex-column">
+            <h2>DATA</h2>
+            <p> Desafio tecnico T10</p>
+          </div>
+          <div className="d-flex justify-content-between">
+          <UserList />
+          <GoogleChart />
+          </div>
         </div>
       </div>
     );

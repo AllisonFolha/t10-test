@@ -76,18 +76,20 @@ export default class AddUser extends Component<Props, State> {
       <div className="submit-form">
         {this.state.submitted ? (
           <div>
-            <h4>User create successfully!</h4>
+            <div className="alert alert-success" role="alert">
+              User create successfully!
+            </div>
             <button className="btn btn-success" onClick={this.newUser}>
               Add more
             </button>
           </div>
         ) : (
-          <div className="row align-items-start justify-content-between">
+          <div className="row">
             <div className="form-group">
-              <label htmlFor="name">Name</label>
               <input
                 type="text"
                 className="form-control"
+                placeholder="Fist name"
                 id="name"
                 required
                 value={this.state.name}
@@ -96,10 +98,10 @@ export default class AddUser extends Component<Props, State> {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="lastName">Description</label>
               <input
                 type="text"
                 className="form-control"
+                placeholder="Last name"
                 id="lastName"
                 required
                 value={this.state.lastName}
@@ -108,10 +110,10 @@ export default class AddUser extends Component<Props, State> {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="lastName">Participation</label>
               <input
                 type="number"
                 className="form-control"
+                placeholder="Participation"
                 id="participation"
                 required
                 value={this.state.participation}
@@ -119,11 +121,12 @@ export default class AddUser extends Component<Props, State> {
                 name="participation"
               />
             </div>
-
-            <button onClick={this.saveUser} className="btn btn-success justify-content-end">
-              Submit
+            <button onClick={this.saveUser} className="btn btn-outline-light">
+              SEND
             </button>
           </div>
+          
+          
         )}
       </div>
     );

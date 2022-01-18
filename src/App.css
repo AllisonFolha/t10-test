@@ -13,5 +13,17 @@
 } */
 
 .submit-form {
-  background-color:#1fd4e7;
+  background-color:#2e8ea7;
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  
+}
+
+.form-group {
+  margin-bottom: 0;
+  margin-right: 20px;
+}
+.btn{
+ width: 100px;
 }
