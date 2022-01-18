@@ -1,51 +1,60 @@
 import { Component } from "react";
 import Chart from "react-google-charts";
+import UserDataService from "../services/service";
 import IUserData from "../types/type";
 type Props = {};
 
 type State = {
   users: Array<IUserData>,
+  chartData: any[][]
 };
-
-const data = [
-  [
-    'Month',
-    'Bolivia',
-    'Ecuador',
-    'Madagascar',
-    'Papua New Guinea',
-    'Rwanda',
-    'Average',
-  ],
-  ['2004/05', 165, 938, 522, 998, 450, 614.6],
-  ['2005/06', 135, 1120, 599, 1268, 288, 682],
-  ['2006/07', 157, 1167, 587, 807, 397, 623],
-  ['2007/08', 139, 1110, 615, 968, 215, 609.4],
-  ['2008/09', 136, 691, 629, 1026, 366, 569.6],
-];
 
 export default class GoogleChart extends Component<Props, State> {
 
   constructor(props: Props) {
-    super(props)
-
+    super(props);
+    this.onDataChange = this.onDataChange.bind(this);
     this.state = {
       users: [],
+      chartData: [],
+
     };
   }
+ 
+  componentDidMount() {
+    UserDataService.getAll().on("value", this.onDataChange);
+  }
 
-  render() {
+  componentWillUnmount() {
+    UserDataService.getAll().off("value", this.onDataChange);
+  }
+
+  onDataChange(items: any) {
+    let chartData = [["name", "participation"]];
+
+    items.forEach((item: any) => {
+      let data = item.val();
+      chartData.push([
+       data.name,
+       parseInt(data.participation, 10)
+      ]);
+    });
+
+    this.setState({
+      chartData: chartData,
+    });
+  }
+
+  render() { 
     return (
-      <div className="col-md-6">
+      <div className="col-md-5">
         <Chart
           width={'600px'}
           height={'350px'}
           chartType="PieChart"
           loader={<div>Loading Chart</div>}
-          // data={this.state.users}
-          data={data}
+          data={this.state.chartData}
           options={{
-            title: 'Monthly Coffee Production by Country',
             pieHole: 0.4,
             is3D: false,
           }}

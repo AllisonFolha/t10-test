@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
@@ -13,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <AddUser/>
-        <div className="container mt-3">
+        <div className="container mt-5">
           <div className="d-flex align-items-start flex-column">
             <h2>DATA</h2>
             <p> Desafio tecnico T10</p>

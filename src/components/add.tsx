@@ -17,9 +17,9 @@ export default class AddUser extends Component<Props, State> {
     this.saveUser = this.saveUser.bind(this);
     this.newUser = this.newUser.bind(this);
     this.state = {
-      name: "",
-      lastName: "",
-      participation: "",
+      name: '',
+      lastName: '',
+      participation: '',
 
       submitted: false,
     };
@@ -66,9 +66,9 @@ export default class AddUser extends Component<Props, State> {
 
   newUser() {
     this.setState({
-      name: "",
-      lastName: "",
-      participation: "",
+      name: '',
+      lastName: '',
+      participation: '',
 
       submitted: false,
     });
@@ -92,7 +92,6 @@ export default class AddUser extends Component<Props, State> {
                 required
                 value={this.state.name}
                 onChange={this.onChangeName}
-                name="name"
               />
             </div>
             <div className="form-group">
@@ -104,7 +103,6 @@ export default class AddUser extends Component<Props, State> {
                 required
                 value={this.state.lastName}
                 onChange={this.onChangeLastName}
-                name="lastName"
               />
             </div>
             <div className="form-group">
@@ -116,7 +114,6 @@ export default class AddUser extends Component<Props, State> {
                 required
                 value={this.state.participation}
                 onChange={this.onChangeParticipation}
-                name="participation"
               />
             </div>
             <button onClick={this.saveUser} className="btn btn-outline-light">

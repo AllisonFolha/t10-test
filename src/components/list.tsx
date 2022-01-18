@@ -2,7 +2,6 @@ import { Component } from "react";
 import UserDataService from "../services/service";
 import IUserData from '../types/type';
 
-
 type Props = {};
 
 type State = {
@@ -58,10 +57,10 @@ export default class UsersList extends Component<Props, State> {
   }
 
   render() {
-    const { users, currentUser, currentIndex } = this.state;
+    const { users} = this.state;
 
     return (
-      <div className="col-md-6">
+      <div className="col-md-7">
         <table className="table table-bordered ">
           <thead>
             <tr>
