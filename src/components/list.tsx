@@ -1,7 +1,6 @@
 import { Component } from "react";
 import UserDataService from "../services/service";
 import IUserData from '../types/type';
-import { Chart } from "react-google-charts";
 
 
 type Props = {};
@@ -58,12 +57,6 @@ export default class UsersList extends Component<Props, State> {
     });
   }
 
-  options = {
-    title: "My Daily Activities",
-    pieHole: 0.4,
-    is3D: false,
-  };
-
   render() {
     const { users, currentUser, currentIndex } = this.state;
 
@@ -79,24 +72,25 @@ export default class UsersList extends Component<Props, State> {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              {users &&
-                users.map((user, index) => (
-                  <td className="list-group-item ">
-                    {user.name}
-                  </td>
-                ))}
-            </tr>
+            {users &&
+              users.map((user, index) => (
+                  <tr key={user.key}>
+                    <td>
+                      {user.key}
+                    </td>
+                    <td >
+                      {user.name}
+                    </td>
+                    <td >
+                      {user.lastName}
+                    </td>
+                    <td >
+                      {user.participation}
+                    </td>
+                  </tr>
+              ))}
           </tbody>
         </table>
-        <ul className="list-group">
-          {users &&
-            users.map((user, index) => (
-              <li className="list-group-item ">
-                {user.name + user.lastName + user.participation}
-              </li>
-            ))}
-        </ul>
       </div>
     );
   }

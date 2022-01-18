@@ -55,6 +55,9 @@ export default class AddUser extends Component<Props, State> {
         this.setState({
           submitted: true,
         });
+        setTimeout(() => {
+          this.newUser()
+        }, 600);
       })
       .catch((e: Error) => {
         console.log(e);
@@ -75,13 +78,8 @@ export default class AddUser extends Component<Props, State> {
     return (
       <div className="submit-form">
         {this.state.submitted ? (
-          <div>
-            <div className="alert alert-success" role="alert">
-              User create successfully!
-            </div>
-            <button className="btn btn-success" onClick={this.newUser}>
-              Add more
-            </button>
+          <div className="alert alert-success" role="alert">
+            User create successfully!
           </div>
         ) : (
           <div className="row">
@@ -125,8 +123,8 @@ export default class AddUser extends Component<Props, State> {
               SEND
             </button>
           </div>
-          
-          
+
+
         )}
       </div>
     );
